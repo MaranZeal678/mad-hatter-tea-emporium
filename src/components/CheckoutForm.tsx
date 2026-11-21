@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { formatPrice } from "@/lib/cart";
 import type { Order } from "@/lib/orders";
 import { useCart } from "./CartProvider";
@@ -11,11 +11,17 @@ export function CheckoutForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [pending, setPending] = useState(false);
+  const submittingRef = useRef(false);
   const [errors, setErrors] = useState<string[]>([]);
   const [confirmed, setConfirmed] = useState<Order[]>([]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (submittingRef.current) {
+      return;
+    }
+
+    submittingRef.current = true;
     setPending(true);
     setErrors([]);
 
@@ -37,6 +43,7 @@ export function CheckoutForm() {
     } catch {
       setErrors(["We couldn't reach the shop. Please try again."]);
     } finally {
+      submittingRef.current = false;
       setPending(false);
     }
   }
@@ -128,7 +135,8 @@ export function CheckoutForm() {
 
             <button
               type="submit"
-              className="w-full rounded-full bg-plum px-6 py-3 text-sm font-medium text-cream shadow-sm transition hover:bg-plum/90"
+              disabled={pending}
+              className="w-full rounded-full bg-plum px-6 py-3 text-sm font-medium text-cream shadow-sm transition hover:bg-plum/90 disabled:cursor-not-allowed disabled:bg-plum/60"
             >
               {pending ? "Placing order…" : "Place order"}
             </button>
