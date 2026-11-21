@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #fbf6ee;
+  --plum: #3b1f4a;
+  --gold: #c99a3c;
+  --rose: #b4485f;
+  --sage: #5f7a61;
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-plum: var(--plum);
+  --color-gold: var(--gold);
+  --color-rose: var(--rose);
+  --color-sage: var(--sage);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
+}
+
+body {
+  background-color: var(--cream);
+  background-image: radial-gradient(
+      circle at 1px 1px,
+      color-mix(in srgb, var(--plum) 7%, transparent) 1px,
+      transparent 0
+    );
+  background-size: 22px 22px;
+  color: var(--plum);
+}
