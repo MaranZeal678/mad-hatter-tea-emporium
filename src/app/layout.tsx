@@ -31,7 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </main>
           <footer className="border-t border-plum/10 py-6 text-center text-xs text-plum/60">
             <nav aria-label="Footer" className="mb-2 flex justify-center gap-4">
-              <Link href="/shipping-returns" className="underline-offset-2 hover:underline">
+              <Link href="/shipping" className="underline-offset-2 hover:underline">
                 Shipping &amp; returns
               </Link>
               <Link href="/orders" className="underline-offset-2 hover:underline">
