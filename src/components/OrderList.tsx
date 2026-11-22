@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { formatPrice } from "@/lib/cart";
 import type { Order } from "@/lib/orders";
+import { track } from "@/lib/analytics";
 
 type State =
   | { status: "loading" }
@@ -12,6 +13,11 @@ type State =
 
 export function OrderList() {
   const [state, setState] = useState<State>({ status: "loading" });
+
+  useEffect(() => {
+    const timer = setTimeout(() => track("orders_viewed"), 150);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     let cancelled = false;

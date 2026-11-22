@@ -1,4 +1,5 @@
 import { AddToCartButton } from "@/components/AddToCartButton";
+import { NewsletterForm } from "@/components/NewsletterForm";
 import { formatPrice } from "@/lib/cart";
 import { products } from "@/lib/products";
 
@@ -43,6 +44,8 @@ export default function ShopPage() {
           </li>
         ))}
       </ul>
+
+      <NewsletterForm />
     </div>
   );
 }
