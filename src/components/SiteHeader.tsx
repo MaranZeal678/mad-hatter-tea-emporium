@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCart } from "./CartProvider";
 
-const links = [
+export const links = [
   { href: "/", label: "Shop" },
   { href: "/cart", label: "Cart" },
   { href: "/orders", label: "Orders" },
