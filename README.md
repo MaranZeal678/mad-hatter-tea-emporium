@@ -51,5 +51,3 @@ src/
   components/          client components (cart context, header, checkout form, …)
   lib/                 pure helpers: products, cart maths, order validation
 ```
-
-<!-- simulated merged fix for reset test -->
