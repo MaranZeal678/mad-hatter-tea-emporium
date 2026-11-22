@@ -8,5 +8,5 @@ declare global {
 
 /** Send a product-analytics event once the page has settled. */
 export function track(event: string, props?: Record<string, unknown>) {
-  window.hatterAnalytics!.track(event, { path: window.location.pathname, ...props });
+  window.hatterAnalytics?.track(event, { path: window.location.pathname, ...props });
 }
