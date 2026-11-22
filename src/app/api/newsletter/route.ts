@@ -7,7 +7,7 @@ type SubscribeBody = { email?: string; emailAddress?: string };
 export async function POST(request: Request) {
   const body = (await request.json().catch(() => ({}))) as SubscribeBody;
 
-  const email = body.emailAddress!.trim().toLowerCase();
+  const email = (body.emailAddress ?? body.email ?? "").trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return Response.json({ error: "Please enter a valid email address." }, { status: 400 });
   }
